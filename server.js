@@ -11,6 +11,6 @@ app.get('*', (req, res) => {
 			  }, 500) // wait 0.5secs
 })
 
-app.listen(80);
-
-console.log("App listening on http://localhost:3000");
+var port = process.env.PORT || 1337;
+app.listen(port);
+console.log("Server running at http://localhost:%d", port);
