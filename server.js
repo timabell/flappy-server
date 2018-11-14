@@ -2,6 +2,7 @@ const express = require('express')
 const app = express();
 
 var returnCode = process.env.returncode || 200;
+var loadDelayMs = process.env.loaddelayms || 500;
 
 app.get('*', (req, res) => {
 	  console.log(new Date(), 'called GET API', req.originalUrl);
@@ -10,7 +11,7 @@ app.get('*', (req, res) => {
 			    res.status(returnCode).send('hello and a '+returnCode+' from a flappy app service');
 			    // console.log('replying with failure');
 			    // res.status(500).send('Something broke!');
-			  }, 500) // wait 0.5secs
+			  }, loadDelayMs)
 })
 
 var port = process.env.PORT || 1337;
