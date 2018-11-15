@@ -1,12 +1,12 @@
-const express = require('express')
-const app = express();
+var express = require('express')
+var app = express();
 
 var returnCode = process.env.returncode || 200;
 var loadDelayMs = process.env.loaddelayms || 500;
 
-app.get('*', (req, res) => {
+app.get('*', function (req, res) {
 	  console.log(new Date(), 'called GET API', req.originalUrl);
-	  setTimeout(() => {
+	  setTimeout(function () {
 			    console.log('replying with '+returnCode);
 			    res.status(returnCode).send('hello and a '+returnCode+' from a flappy app service');
 			    // console.log('replying with failure');
